@@ -1,0 +1,29 @@
+# Virtual Environment (The Big One)
+dbt-env/
+
+# --- 1. THE TRIPLE-RED SECURITY LAYER ---
+# NEVER upload these to GitHub. They contain your private keys.
+creds.json
+.env
+*.pem
+secrets.py
+
+# --- 2. DBT RUNTIME JUNK ---
+# These are auto-generated every time you run the Sentinel. 
+# They change constantly and will cause "merge conflicts" if you git them.
+target/
+dbt_packages/
+logs/
+dbt_modules/
+
+# --- 3. PYTHON ENVIRONMENT ---
+# We don't want to upload your 'dbt-env' folder or compiled caches.
+__pycache__/
+*.pyc
+.venv/
+env/
+venv/
+
+# --- 4. OS SPECIFIC ---
+.DS_Store
+Thumbs.db

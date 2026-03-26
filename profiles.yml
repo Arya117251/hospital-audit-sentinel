@@ -1,0 +1,12 @@
+hospital_audit: # This name must match your dbt_project.yml 'profile:' line
+  outputs:
+    dev:
+      type: bigquery
+      method: service-account
+      project: drug-moa-project # Your GCP Project ID
+      dataset: cms_medicare # The dataset where your tables will be created
+      threads: 1
+      keyfile: E:\data_warehouse\dbt\hospital_audit\creds.json
+      location: US
+      priority: interactive
+  target: dev

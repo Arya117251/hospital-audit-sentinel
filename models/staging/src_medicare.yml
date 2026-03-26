@@ -1,0 +1,9 @@
+version: 2
+
+sources:
+  - name: medicare_source
+    database: bigquery-public-data
+    schema: cms_medicare
+    tables:
+      - name: inpatient_charges_2015
+      - name: hospital_general_info
