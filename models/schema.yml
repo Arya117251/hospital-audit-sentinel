@@ -1,0 +1,26 @@
+version: 2
+
+models:
+  - name: stg_hospital_info
+    description: "Silver Layer: Cleaned provider information from CMS Medicare data."
+    columns:
+      - name: provider_id
+        description: "Unique identifier for the healthcare provider."
+        tests:
+          - not_null
+      - name: provider_name
+        description: "Name of the hospital or facility."
+
+  - name: fct_hospital_audit
+    description: "Gold Layer: The primary fact table calculating price variance between charges and payments."
+    columns:
+      - name: provider_id
+        description: "Foreign key to the provider."
+      - name: average_covered_charges
+        description: "The average amount the provider charges for the service."
+      - name: average_total_payments
+        description: "The actual average amount paid to the provider."
+      - name: price_variance
+        description: "The markup: (Covered Charges - Total Payments)."
+        tests:
+          - not_null

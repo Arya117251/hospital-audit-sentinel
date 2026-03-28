@@ -1,4 +1,4 @@
-hospital_audit: # This name must match your dbt_project.yml 'profile:' line
+hospital_audit: 
   outputs:
     dev:
       type: bigquery

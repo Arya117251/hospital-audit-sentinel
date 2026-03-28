@@ -9,15 +9,12 @@ creds.json
 secrets.py
 
 # --- 2. DBT RUNTIME JUNK ---
-# These are auto-generated every time you run the Sentinel. 
-# They change constantly and will cause "merge conflicts" if you git them.
 target/
 dbt_packages/
 logs/
 dbt_modules/
 
 # --- 3. PYTHON ENVIRONMENT ---
-# We don't want to upload your 'dbt-env' folder or compiled caches.
 __pycache__/
 *.pyc
 .venv/

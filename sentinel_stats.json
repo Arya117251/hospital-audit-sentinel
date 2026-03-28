@@ -1,0 +1,52 @@
+[
+    {
+        "timestamp": "2026-03-26 00:13:25.921180",
+        "model": "gemini-3-flash-preview",
+        "error_detected": "ings:\n04:13:19  \n04:13:19  Failure in model inpatient_charges (models\\inpatient_charges.sql)\n04:13:19    Database Error in model inpatient_charges (models\\inpatient_charges.sql)\n  Unrecognized name: providerrr_name; Did you mean provider_name? at [17:3]\n  compiled code at target\\run\\my_new_project\\models\\inpatient_charges.sql\n04:13:19  \n04:13:19    compiled code at target\\compiled\\my_new_project\\models\\inpatient_charges.sql\n04:13:19  \n04:13:19  Done. PASS=4 WARN=0 ERROR=1 SKIP=0 NO-OP=0 TOTAL=5\n",
+        "suggested_fix": "SELECT \n    provider_id, \n    provider_name, \n    provider_city, \n    average_covered_charges, \n    average_total_payments,\n    (average_covered_charges - average_total_payments) AS variance\nFROM `bigquery-public-data.cms_medicare.inpatient_charges_2015`",
+        "prompt_tokens": 300,
+        "completion_tokens": 82,
+        "total_tokens": 658,
+        "estimated_cost_usd": 4.934999999999999e-05
+    },
+    {
+        "timestamp": "2026-03-26 00:24:49.618823",
+        "model": "gemini-3-flash-preview",
+        "error_detected": "tered adapter: bigquery=1.10.3\n04:24:42  Encountered an error:\nCompilation Error\n  dbt found two models with the name \"fct_hospital_audit\".\n  \n  Since these resources have the same name, dbt will be unable to find the correct resource\n  when looking for ref(\"fct_hospital_audit\").\n  \n  To fix this, change the name of one of these resources:\n  - model.my_new_project.fct_hospital_audit (models\\fct_hospital_audit.sql)\n  - model.my_new_project.fct_hospital_audit (models\\marts\\fct_hospital_audit.sql)\n",
+        "suggested_fix": "\nSELECT\n    provider_id,\n    provider_name,\n    provider_city,\n    average_covered_charges,\n    average_total_payments,\n    (average_covered_charges - average_total_payments) AS variance\nFROM\n    `bigquery-public-data.cms_medicare.inpatient_charges_2015`\n",
+        "prompt_tokens": 264,
+        "completion_tokens": 84,
+        "total_tokens": 794,
+        "estimated_cost_usd": 5.955e-05
+    },
+    {
+        "timestamp": "2026-03-26 00:25:35.943002",
+        "model": "gemini-3-flash-preview",
+        "error_detected": "tered adapter: bigquery=1.10.3\n04:25:29  Encountered an error:\nCompilation Error\n  dbt found two models with the name \"fct_hospital_audit\".\n  \n  Since these resources have the same name, dbt will be unable to find the correct resource\n  when looking for ref(\"fct_hospital_audit\").\n  \n  To fix this, change the name of one of these resources:\n  - model.my_new_project.fct_hospital_audit (models\\fct_hospital_audit.sql)\n  - model.my_new_project.fct_hospital_audit (models\\marts\\fct_hospital_audit.sql)\n",
+        "suggested_fix": "\nSELECT\n  provider_id,\n  provider_name,\n  provider_city,\n  average_covered_charges,\n  average_total_payments,\n  (average_covered_charges - average_total_payments) AS variance\nFROM\n  `bigquery-public-data.cms_medicare.inpatient_charges_2015`\n",
+        "prompt_tokens": 264,
+        "completion_tokens": 84,
+        "total_tokens": 868,
+        "estimated_cost_usd": 6.51e-05
+    },
+    {
+        "timestamp": "2026-03-26 00:26:22.731441",
+        "model": "gemini-3-flash-preview",
+        "error_detected": "tered adapter: bigquery=1.10.3\n04:26:15  Encountered an error:\nCompilation Error\n  dbt found two models with the name \"fct_hospital_audit\".\n  \n  Since these resources have the same name, dbt will be unable to find the correct resource\n  when looking for ref(\"fct_hospital_audit\").\n  \n  To fix this, change the name of one of these resources:\n  - model.my_new_project.fct_hospital_audit (models\\fct_hospital_audit.sql)\n  - model.my_new_project.fct_hospital_audit (models\\marts\\fct_hospital_audit.sql)\n",
+        "suggested_fix": "\nSELECT\n  provider_id,\n  provider_name,\n  provider_city,\n  average_covered_charges,\n  average_total_payments,\n  (average_covered_charges - average_total_payments) AS variance\nFROM\n  `bigquery-public-data.cms_medicare.inpatient_charges_2015`\n",
+        "prompt_tokens": 264,
+        "completion_tokens": 84,
+        "total_tokens": 768,
+        "estimated_cost_usd": 5.76e-05
+    },
+    {
+        "timestamp": "2026-03-27 21:56:56.970596",
+        "model": "gemini-3-flash-preview",
+        "error_detected": "0 warnings:\n01:56:50  \n01:56:50  Failure in model fct_hospital_audit (models\\fct_hospital_audit.sql)\n01:56:50    Database Error in model fct_hospital_audit (models\\fct_hospital_audit.sql)\n  Name average_total_payments_typo not found inside c at [36:7]\n  compiled code at target\\run\\my_new_project\\models\\fct_hospital_audit.sql\n01:56:50  \n01:56:50    compiled code at target\\compiled\\my_new_project\\models\\fct_hospital_audit.sql\n01:56:50  \n01:56:50  Done. PASS=3 WARN=0 ERROR=1 SKIP=0 NO-OP=0 TOTAL=4\n",
+        "suggested_fix": "\nSELECT\n  provider_id,\n  provider_name,\n  provider_city,\n  average_covered_charges,\n  average_total_payments,\n  (average_covered_charges - average_total_payments) AS variance\nFROM\n  `bigquery-public-data.cms_medicare.inpatient_charges_2015`\n",
+        "prompt_tokens": 310,
+        "completion_tokens": 84,
+        "total_tokens": 679,
+        "estimated_cost_usd": 5.0925e-05
+    }
+]
