@@ -24,3 +24,5 @@ venv/
 # --- 4. OS SPECIFIC ---
 .DS_Store
 Thumbs.db
+
+**/.streamlit/secrets.toml
