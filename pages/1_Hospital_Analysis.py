@@ -2,6 +2,7 @@ import streamlit as st
 import pandas as pd
 import plotly.express as px
 from google.cloud import bigquery
+from google.oauth2 import service_account
 import os
 
 # --- 1. DYNAMIC PATHING ---
