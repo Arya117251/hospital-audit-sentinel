@@ -10,19 +10,18 @@ import pandas as pd
 
 # --- 1. CONFIGURATION ---
 GEMINI_KEY = os.environ.get("GEMINI_KEY")
-from google.oauth2 import service_account
-
-def get_bq_client():
-    # This works both locally and in the cloud
-    if "gcp_service_account" in st.secrets:
-        info = st.secrets["gcp_service_account"]
-        creds = service_account.Credentials.from_service_account_info(info)
-        return bigquery.Client(credentials=creds, project=info["project_id"])
-    else:
-        # Fallback for local dev if you still have the file
-        return bigquery.Client.from_service_account_json("creds.json")
-
-client = get_bq_client()
+if "gcp_service_account" in st.secrets:
+    creds_info = st.secrets["gcp_service_account"]
+    
+    # 2. Convert that dictionary into actual Google Credentials
+    credentials = service_account.Credentials.from_service_account_info(creds_info)
+    
+    # 3. Create the client using the credentials in memory (NO FILE NEEDED)
+    client = bigquery.Client(credentials=credentials, project=creds_info["project_id"])
+else:
+    # This part only runs if you forgot to add secrets to the Cloud Dashboard
+    st.error("GCP Secrets not found in Streamlit Cloud Settings.")
+    st.stop()
 
 if not GEMINI_KEY:
     print("❌ SECURITY ERROR: GEMINI_KEY not found!")
