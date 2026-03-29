@@ -2,19 +2,12 @@ import streamlit as st
 import pandas as pd
 import plotly.express as px
 from google.cloud import bigquery
-from google.oauth2 import service_account
 import os
 
-if "gcp_service_account" in st.secrets:
-    creds_info = st.secrets["gcp_service_account"]
-    # 2. Convert that dictionary into actual Google Credentials
-    credentials = service_account.Credentials.from_service_account_info(creds_info)
-    # 3. Create the client using the credentials in memory (NO FILE NEEDED)
-    client = bigquery.Client(credentials=credentials, project=creds_info["project_id"])
-else:
-    # This part only runs if you forgot to add secrets to the Cloud Dashboard
-    st.error("GCP Secrets not found in Streamlit Cloud Settings.")
-    st.stop()
+# --- 1. DYNAMIC PATHING ---
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+KEY_PATH = os.path.join(BASE_DIR, "creds.json")
+os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = KEY_PATH
 
 st.set_page_config(page_title="Hospital Audit", layout="wide")
 st.title("🏥 Hospital Price Variance Audit")
