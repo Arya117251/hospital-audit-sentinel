@@ -10,10 +10,19 @@ import pandas as pd
 
 # --- 1. CONFIGURATION ---
 GEMINI_KEY = os.environ.get("GEMINI_KEY")
-BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-KEY_PATH = os.path.join(BASE_DIR, "creds.json")
-PROJECT_ID = "drug-moa-project"
-LOG_FILE = os.path.join(BASE_DIR, "sentinel_stats.json")
+from google.oauth2 import service_account
+
+def get_bq_client():
+    # This works both locally and in the cloud
+    if "gcp_service_account" in st.secrets:
+        info = st.secrets["gcp_service_account"]
+        creds = service_account.Credentials.from_service_account_info(info)
+        return bigquery.Client(credentials=creds, project=info["project_id"])
+    else:
+        # Fallback for local dev if you still have the file
+        return bigquery.Client.from_service_account_json("creds.json")
+
+client = get_bq_client()
 
 if not GEMINI_KEY:
     print("❌ SECURITY ERROR: GEMINI_KEY not found!")
