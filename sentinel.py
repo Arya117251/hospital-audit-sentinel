@@ -10,18 +10,10 @@ import pandas as pd
 
 # --- 1. CONFIGURATION ---
 GEMINI_KEY = os.environ.get("GEMINI_KEY")
-if "gcp_service_account" in st.secrets:
-    creds_info = st.secrets["gcp_service_account"]
-    
-    # 2. Convert that dictionary into actual Google Credentials
-    credentials = service_account.Credentials.from_service_account_info(creds_info)
-    
-    # 3. Create the client using the credentials in memory (NO FILE NEEDED)
-    client = bigquery.Client(credentials=credentials, project=creds_info["project_id"])
-else:
-    # This part only runs if you forgot to add secrets to the Cloud Dashboard
-    st.error("GCP Secrets not found in Streamlit Cloud Settings.")
-    st.stop()
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+KEY_PATH = os.path.join(BASE_DIR, "creds.json")
+PROJECT_ID = "drug-moa-project"
+LOG_FILE = os.path.join(BASE_DIR, "sentinel_stats.json")
 
 if not GEMINI_KEY:
     print("❌ SECURITY ERROR: GEMINI_KEY not found!")
