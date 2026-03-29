@@ -5,9 +5,11 @@ from google.cloud import bigquery
 import os
 
 # --- 1. DYNAMIC PATHING ---
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-KEY_PATH = os.path.join(BASE_DIR, "creds.json")
-os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = KEY_PATH
+creds_dict = st.secrets["gcp_service_account"]
+# 2. Convert the dictionary into a Google Credentials object
+credentials = service_account.Credentials.from_service_account_info(creds_dict)
+# 3. Initialize the client using those credentials
+client = bigquery.Client(credentials=credentials, project=creds_dict['project_id'])
 
 st.set_page_config(page_title="Hospital Audit", layout="wide")
 st.title("🏥 Hospital Price Variance Audit")
