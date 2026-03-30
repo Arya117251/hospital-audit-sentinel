@@ -22,6 +22,7 @@ This project demonstrates a professional **Modern Data Stack (MDS)** workflow:
 *   **App Framework:** `Streamlit` for a high-performance Python-based analytical interface.
 *   **CI/CD:** `GitHub Actions` to automate deployment and synchronization.
 *   **Environment:** Hosted on `streamlit.io` for global accessibility.
+*   **Link:** https://hospital-audit-sentinel-6zpmbsccesmvwhigv4ayeu.streamlit.app/
 
 ## 🚀 Core Features
 *   **Anomaly Detection:** Automated filters to identify hospitals with disproportionate "Average Payments" vs. "Total Discharges."
